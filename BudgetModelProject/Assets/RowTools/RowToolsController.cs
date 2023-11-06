@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Row.Scripts;
+using Services.AddRow;
 using Systems;
 using UnityEngine;
 
@@ -25,10 +26,17 @@ namespace RowTools
         private void OnEnable()
         {
             budgetRowController.OnSelectToggle += OnSelectToggle;
+            AddRemoveBudgetService.OnRemoveBudget += OnRemove;
         }
         private void OnDisable()
         {
             budgetRowController.OnSelectToggle += OnSelectToggle;
+            AddRemoveBudgetService.OnRemoveBudget -= OnRemove;
+        }
+
+        private void OnRemove(RemoveBudgetModel model)
+        {
+            OnSelectToggle();
         }
 
         private void OnSelectToggle()
@@ -41,8 +49,9 @@ namespace RowTools
         private void Delete()
         {
             budgetRowController.GetSelectedRows(_deleteBuffer);
-            foreach (var deleteBudgetId in _deleteBuffer)
+            for (var index = 0; index < _deleteBuffer.Count; index++)
             {
+                var deleteBudgetId = _deleteBuffer[index];
                 RemoveBudgetSystem.RemoveBudget(deleteBudgetId);
             }
         }
