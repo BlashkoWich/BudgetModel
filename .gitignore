@@ -2,6 +2,14 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+BudgetModelProject/[Ll]ibrary/
+BudgetModelProject/[Tt]emp/
+BudgetModelProject/[Oo]bj/
+BudgetModelProject/[Bb]uild/
+BudgetModelProject/[Bb]uilds/
+BudgetModelProject/[Ll]ogs/
+BudgetModelProject/[Uu]ser[Ss]ettings/
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
